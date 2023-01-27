@@ -1,0 +1,34 @@
+---------------------------------------------------------------------------------------
+Tables:
+---------------------------------------------------------------------------------------
+1. directors
+	director_id int primary key,
+	name varchar(20),
+    dob date
+
+2. movies
+	movie_id int primary key,
+	title varchar(30),
+    year year,
+    director_id int,
+    constraint Fk_DirId foreign key (director_id) references directors(director_id)
+
+3. actors
+	actor_id int primary key,
+	name varchar(30),
+    dob date
+
+4. movies_actors
+	movie_id int,
+    actor_id int,
+    constraint Fk_MovieId foreign key (movie_id) references movies(movie_id),
+    constraint Fk_ActorId foreign key (actor_id) references actors(actor_id)
+
+
+---------------------------------------------------------------------------------------
+Relationships:
+---------------------------------------------------------------------------------------
+1. Each movie has a director. This relationship is shown with the help of constraint Fk_DirId.
+2. Each movie have list of actors. This relationship is shown using a mapping table movies_actors
+   and with the help of constraints Fk_MovieId and Fk_ActorId.
+   
